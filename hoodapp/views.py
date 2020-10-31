@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http  import HttpResponse
-from .models import Profile, User
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .models import Profile, User, Post, Neighbourhood, Business, Services
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, PostUploadForm
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
@@ -12,7 +12,8 @@ from django.http.response import Http404
 @login_required
 def index(request):
     users = User.objects.all()
-    return render(request, 'index.html', {"users": users})
+    posts = Post.objects.all()
+    return render(request, 'index.html', {"posts":posts[::-1], "users": users})
 
 def register(request):
     if request.method == 'POST':
@@ -49,3 +50,26 @@ def update(request):
         'p_form': p_form
     }
     return render(request, 'users/update.html', context)
+
+
+@login_required
+def upload_post(request):
+    users = User.objects.exclude(id=request.user.id)
+    if request.method == "POST":
+        form = PostUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.prof_ref = request.user.profile
+            post.save()
+            messages.success(request, f'Successfully uploaded your Post!')
+            return redirect('index')
+    else:
+        form = PostUploadForm()
+    return render(request, 'upload_post.html', {"form": form, "users": users})
+
+def post(request,post_id):
+    try:
+        post = Post.objects.get(id = post_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request,"post.html", {"post":post})

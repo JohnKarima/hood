@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile, Post, Business, Services, Neighbourhood
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -21,3 +21,12 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_photo', 'bio']
+
+class PostUploadForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'post']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.profile
+        return super().form_valid(form)

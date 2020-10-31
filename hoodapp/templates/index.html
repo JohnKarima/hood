@@ -8,5 +8,20 @@
     <h2 class=" ml-5 pt-5 text-center underline">WIP</h2>
     <h5 class="text-muted text-center">As of {% now "jS \o\f F" %}</h5><br>
 
+<div class="container">
+    <div class="row">
+
+  
+    {% for post in posts %}
+    <div class="col text-center">
+    <h5> {{post.title}}</h5>
+    <p> {{post.post}} </p>
+    <p> {{post.pub_date}}</p>    
+    <p> By: {{post.prof_ref.user}}</p>    
+
+</div>   
+    {% endfor %}
+</div>
+</div>
 
 {% endblock %}
