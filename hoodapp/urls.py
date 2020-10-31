@@ -12,6 +12,8 @@ urlpatterns=[
     path('upload_post/', views.upload_post, name='upload_post'),
     path('business/', views.business, name='business'),
     path('upload_business/', views.upload_business, name='upload_business'),
+    path('search/', views.search_results, name='search_results'),
+
 
 
 ]
