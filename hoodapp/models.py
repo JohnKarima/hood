@@ -37,7 +37,7 @@ class Business(models.Model):
     biz_name = models.CharField(max_length = 60)
     biz_email = models.EmailField()
     biz_description = models.TextField()
-    biz_digits = models.IntegerField(10, null=True)
+    biz_digits = models.IntegerField(null=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     hood_ref = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='businesses', null=True)
 
@@ -76,3 +76,4 @@ class Services(models.Model):
     hospital_no = models.IntegerField(10,blank = True)
     firedpt_name = models.CharField(max_length = 60,blank = True)
     firedpt_no = models.IntegerField(10,blank = True)
+    hood_ref = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='services', null=True)

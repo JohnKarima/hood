@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http  import HttpResponse
 from .models import Profile, User, Post, Neighbourhood, Business, Services
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, PostUploadForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, PostUploadForm, BizUploadForm
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
@@ -67,9 +67,24 @@ def upload_post(request):
         form = PostUploadForm()
     return render(request, 'upload_post.html', {"form": form, "users": users})
 
-def post(request,post_id):
-    try:
-        post = Post.objects.get(id = post_id)
-    except ObjectDoesNotExist:
-        raise Http404()
-    return render(request,"post.html", {"post":post})
+@login_required
+def business(request):
+    users = User.objects.all()
+    businesses = Business.objects.all()
+    return render(request, 'business.html', {"businesses":businesses[::-1], "users": users})
+
+
+@login_required
+def upload_business(request):
+    users = User.objects.exclude(id=request.user.id)
+    if request.method == "POST":
+        form = BizUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            biz = form.save(commit = False)
+            biz.prof_ref = request.user.profile
+            biz.save()
+            messages.success(request, f'Successfully uploaded your Business!')
+            return redirect('business')
+    else:
+        form = BizUploadForm()
+    return render(request, 'upload_business.html', {"form": form, "users": users})

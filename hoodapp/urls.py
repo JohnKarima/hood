@@ -10,5 +10,8 @@ urlpatterns=[
     path('profile/', views.profile, name='profile'),
     path('update/', views.update, name='update'),
     path('upload_post/', views.upload_post, name='upload_post'),
-    path('post/<post_id>/',views.post,name ='post'),
+    path('business/', views.business, name='business'),
+    path('upload_business/', views.upload_business, name='upload_business'),
+
+
 ]

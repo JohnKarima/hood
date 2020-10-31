@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+{{block.super}}
+
+
+<div class="container text-center"><br><br>
+    <h2>Upload a business <a href="{% url 'upload_business' %}">Here</a></h2>
+</div>
+
+
+<div class="container text-center">
+        {% for business in businesses %}
+
+                <p><strong>Business Name:</strong> {{business.biz_name}}</p>
+                <p><strong>Description:</strong> {{business.biz_description}}</p>
+                <p><strong>Email:</strong> {{business.biz_email}}</p>
+                <p><strong>Phone Number:</strong> {{business.biz_digits}}</p>
+                <p><strong>Launched:</strong> {{business.pub_date}}</p>
+                <hr>
+            {% endfor %}
+            
+            <p><a href="{%url 'index' %}">Back to Home Page</a></p>
+
+
+        </div>
+        
+
+ {% endblock %}
