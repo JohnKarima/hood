@@ -32,7 +32,6 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-
 class Neighbourhood(models.Model):
     hood_name = models.CharField(max_length = 60)
     hood_location = models.CharField(max_length = 60)
@@ -78,11 +77,21 @@ class Business(models.Model):
     
         ordering = ['pub_date']
 
+    def save_business(self):
+        self.save()
+
+    @classmethod
+    def delete_business(cls,id):
+        cls.objects.filter(id).delete()
+
+    @classmethod
+    def update_business(cls,id,new_name):
+        cls.objects.filter(id=id).update(biz_name = new_name)
+
     @classmethod
     def search_business(cls, search_term):
         biz = cls.objects.filter(biz_name__icontains=search_term)
         return biz
-
     
     def __str__(self):
         return self.biz_name
