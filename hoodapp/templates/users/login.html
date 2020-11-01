@@ -2,6 +2,7 @@
 {%load crispy_forms_tags%}
 {% block content %}
 {{block.super}}
+<div class="dark-mode whiten">
 <div class="container"><br><br>
     <div class="row">
         <div class="col-md-4"></div>
@@ -13,17 +14,18 @@
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group text-center">
-                <button class="btn btn-outline-info" type="submit">Log In</button>
+                <button class="btn btn-outline-light" type="submit">Log In</button>
             </div>
             </form><br>
             <div class="border-top pt-3 text-center">
-            <small class="text-muted">Don't Have an Account?
+            <small class="">Don't Have an Account?
                 <a href="{% url 'register' %}">Sign Up</a>
             </small>
             </div>
         </div>
         <div class="col-md-4"></div>
     </div>
+</div>
 </div>
 
 

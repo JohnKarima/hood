@@ -1,12 +1,14 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
+<div class="dark-mode whiten">
 <div class="container"><br><br>
 <h2>You have been logged out</h2>
 <div class="border-top pt-3">
     <small class="text-muted">
         <a href="{% url 'login' %}">Log in Again?</a>
     </small>
+</div>
 </div>
 </div>
 {% endblock %}
