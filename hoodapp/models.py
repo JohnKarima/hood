@@ -31,13 +31,22 @@ class Neighbourhood(models.Model):
     
         ordering = ['pub_date']
 
+    def save_hood(self):
+        self.save() 
+
     @classmethod
-    def update_occupant_count(cls,id,new_occupant):
-        cls.objects.filter(id=id).update(occupant_count =new_occupant)
+    def delete_hood(cls,id):
+        cls.objects.filter(id).delete()
+    @classmethod
+    def update_hood(cls,id,new_name):
+        cls.objects.filter(id=id).update(hood_name = new_name)
+
+    @classmethod
+    def update_family_count(cls,id,new_occupant):
+        cls.objects.filter(id=id).update(family_size =new_occupant)
 
     def __str__(self):
         return self.hood_name
-
 
 class Business(models.Model):
     biz_name = models.CharField(max_length = 60)
