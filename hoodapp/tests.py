@@ -22,3 +22,22 @@ class ProfileTestClass(TestCase):
         self.assertTrue(len(profiles) == 0)
 
    
+class NeighbourhoodTestClass(TestCase):
+    def setUp(self):
+        self.new_neighbourhood = Neighbourhood(hood_name = 'kasarani',hood_location = 'Nairobi',family_size=1)
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_neighbourhood, Neighbourhood))
+
+    def test_update_neighbourhood(self):
+        self.new_neighbourhood.save_neighbourhood()
+        neighbourhood_id = self.new_neighbourhood.id
+        Neighbourhood.update_neighbourhood(id, "test")
+        self.assertEqual(self.neighbourhood.neighbourhood,"test")
+
+    def test_delete_neighbourhood(self):
+        self.neighbourhood.save_neighbourhood()
+        self.neighbourhood.delete_neighbourhood()
+        hoods = Neighbourhood.objects.all()
+        self.assertTrue(len(hoods) == 0)
+
