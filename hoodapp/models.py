@@ -22,7 +22,7 @@ class Profile(models.Model):
 
     @classmethod
     def update_profile(cls,id,new_name):
-        cls.objects.filter(id=id).update(user = new_user)
+        cls.objects.filter(id=id).update(user = new_name)
 
     @classmethod
     def get_profile(cls):
@@ -117,7 +117,6 @@ class Services(models.Model):
     hospital_no = models.IntegerField(10,blank = True)
     firedpt_name = models.CharField(max_length = 60,blank = True)
     firedpt_no = models.IntegerField(10,blank = True)
-    hood_ref = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='services', null=True)
 
     def __str__(self):
         return self.police_station

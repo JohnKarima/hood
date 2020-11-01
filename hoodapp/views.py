@@ -116,3 +116,11 @@ def search_results(request):
     else:
         message = "You haven't searched for any businesses yet"
     return render(request, 'search.html', {'message': message})
+
+
+@login_required
+def services(request):
+    users = User.objects.all()
+    services = Services.objects.all()
+    return render(request, 'services.html', {"services":services[::-1], "users": users})
+
