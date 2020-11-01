@@ -103,7 +103,6 @@ class Post(models.Model):
     prof_ref = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts', null=True)
     hood_ref = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='posts', null=True)
 
-
     class Meta:
     
         ordering = ['pub_date']
