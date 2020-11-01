@@ -4,10 +4,11 @@
 {%load cloudinary%}
 {%block content %}
 {{block.super}}
+<div class="dark-mode">
 <div class="container"><br><br>
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-8 whiten">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -15,11 +16,12 @@
                         {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Upload</button>
+                    <button class="btn btn-outline-light" type="submit">Upload</button>
                 </div>
             </form>
         </div>
         <div class="col-md-2"></div>
     </div>
+</div>
 </div>
 {% endblock %}
