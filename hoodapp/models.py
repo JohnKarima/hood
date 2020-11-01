@@ -12,12 +12,25 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     bio = models.TextField(null=True)
     profile_photo = CloudinaryField('profile_photo', null=True)
-    # hood_ref = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='profiles', null=True)
 
+    def save_profile(self):
+        self.save()
+
+    @classmethod
+    def delete_profile(cls,id):
+        cls.objects.filter(id).delete()
+
+    @classmethod
+    def update_profile(cls,id,new_name):
+        cls.objects.filter(id=id).update(user = new_user)
+
+    @classmethod
+    def get_profile(cls):
+        profile=Profile.objects.all()
+        return profile
 
     def __str__(self):
         return f'{self.user.username} Profile'
-
 
 
 class Neighbourhood(models.Model):
