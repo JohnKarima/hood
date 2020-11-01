@@ -13,14 +13,15 @@
     <div class="row">
         {% if businesses %}
         {% for business in businesses %}
+        <div class="col-md-6">
             <div class="card zoom" id="cardoffwhite">
-                
                 <div class="card-body">
                     <p><strong>Title:</strong> {{business.biz_name}}</p>
                     <p><strong>Description:</strong> {{business.biz_description}}</p>
                     <p><strong>Phone Number:</strong> {{business.biz_digits}}</p>
                 </div>
         </div>
+    </div>
         {% endfor %}
     </div>
 </div>
