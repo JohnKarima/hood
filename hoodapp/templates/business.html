@@ -7,25 +7,42 @@
 <div style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/static/img/biz.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment: fixed; height:100vh;">
 
 <div class="container text-center"><br><br>
-    <h2>Upload a business <a href="{% url 'upload_business' %}">Here</a></h2>
+    <h2 class="whiten">Upload a business <a href="{% url 'upload_business' %}">Here</a></h2>
 </div>
 
 
 <div class="container text-center">
+    <div class="row">
+
         {% for business in businesses %}
 
-                <p><strong>Business Name:</strong> {{business.biz_name}}</p>
-                <p><strong>Description:</strong> {{business.biz_description}}</p>
-                <p><strong>Email:</strong> {{business.biz_email}}</p>
-                <p><strong>Phone Number:</strong> {{business.biz_digits}}</p>
-                <p><strong>Launched:</strong> {{business.pub_date}}</p>
+        <div class="col md-6 text-center">
+    
+            <div class="card text-center">
+                <div class="card-header">
+                    {{business.biz_name}}
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{business.biz_description}}</h5>
+                </div>
+                <p class="card-text">Contacts: {{business.biz_digits}} </p>
+
+                <div class="card-footer text-muted"> Posted on
+                    {{business.pub_date|date:"D d M"}} 
+                </div>
+              </div>
+        
+        </div>  
                 <hr>
             {% endfor %}
             
-            <p><a href="{%url 'index' %}">Back to Home Page</a></p>
 
 
-        </div>
+        </div><br><br><br>
+        <p class="whiten">Back to <a href="{%url 'index' %}">Home Page</a></p>
+
     </div>
+</div>
+
 
  {% endblock %}
