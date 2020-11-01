@@ -1,5 +1,6 @@
 {% extends 'base.html'%} 
 {% block content %}
+<div class="dark-mode ">
 <div class="container"><br><br>
   <div class="row text-center">
     {% if businesses%}
@@ -8,7 +9,7 @@
       <h2> Found 0 businesses for the search term {{message}}</h2>
     {% endif %}
   </div>
-</div>
+</div><br><br>
 <div class="container">
     <div class="row">
         {% if businesses %}
@@ -16,9 +17,9 @@
         <div class="col-md-6">
             <div class="card zoom" id="cardoffwhite">
                 <div class="card-body">
-                    <p><strong>Title:</strong> {{business.biz_name}}</p>
+                    <p><strong>Business Name:</strong> {{business.biz_name}}</p>
                     <p><strong>Description:</strong> {{business.biz_description}}</p>
-                    <p><strong>Phone Number:</strong> {{business.biz_digits}}</p>
+                    <p><strong>Contacts:</strong> {{business.biz_digits}}</p>
                 </div>
             </div>
         </div>
@@ -28,6 +29,7 @@
 
 <div class="container text-center"><br><br>
     <h2>View all businesses <a href="{% url 'business' %}">Here</a></h2>
+</div>
 </div>
 {% endif %}
 {% endblock %}
