@@ -118,3 +118,6 @@ class Services(models.Model):
     firedpt_name = models.CharField(max_length = 60,blank = True)
     firedpt_no = models.IntegerField(10,blank = True)
     hood_ref = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, related_name='services', null=True)
+
+    def __str__(self):
+        return self.police_station
