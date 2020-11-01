@@ -7,40 +7,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         {% if user.is_authenticated %}
-        
         <li class="nav-item">
             <a class="nav-link" href="{%url 'business'%}">Biashara</a>
         </li>
-        
         <li class="nav-item">
             <a class="nav-link" href="{%url 'upload_post'%}">Upload a Post</a>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" href="{%url 'services'%}">Emergency</a>
-          </li>
-
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{%url 'profile'%}">Profile</a>
-          </li>
-  
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{%url 'logout'%}">Logout</a>
-        </li>
-
-        
+        </li>        
         {% else %}
         <li class="nav-item">
             <a class="nav-link" href="{%url 'login'%}">Login</a>
         </li>
           {% endif %}        
       </ul>
-
       <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
         <input class="form-control mr-sm-2" type="search" placeholder="Search Businesses" aria-label="Search" name="business">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
-      
     </div>
 </div>
 </nav><br><br>

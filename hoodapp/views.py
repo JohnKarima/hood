@@ -8,7 +8,6 @@ from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import Http404
 
-
 @login_required
 def index(request):
     users = User.objects.all()
@@ -43,11 +42,6 @@ def profile(request):
         form = HoodForm()
     return render(request, 'users/profile.html', {"form": form, "users": users})
 
-
-
-
-    # return render(request, 'users/profile.html')
-
 @login_required
 def update(request):
     if request.method == "POST":
@@ -67,7 +61,6 @@ def update(request):
         'p_form': p_form
     }
     return render(request, 'users/update.html', context)
-
 
 @login_required
 def upload_post(request):
@@ -89,7 +82,6 @@ def business(request):
     users = User.objects.all()
     businesses = Business.objects.all()
     return render(request, 'business.html', {"businesses":businesses[::-1], "users": users})
-
 
 @login_required
 def upload_business(request):
@@ -117,10 +109,8 @@ def search_results(request):
         message = "You haven't searched for any businesses yet"
     return render(request, 'search.html', {'message': message})
 
-
 @login_required
 def services(request):
     users = User.objects.all()
     services = Services.objects.all()
     return render(request, 'services.html', {"services":services[::-1], "users": users})
-

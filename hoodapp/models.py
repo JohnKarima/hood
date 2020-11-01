@@ -6,8 +6,6 @@ from django.db.models.signals import pre_delete
 import cloudinary
 import datetime as dt
 
-
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     bio = models.TextField(null=True)

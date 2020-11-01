@@ -22,6 +22,3 @@ urlpatterns = [
     path('', include('hoodapp.urls')),
     path('register/', user_views.register, name = 'register'),
 ]
-
-
-

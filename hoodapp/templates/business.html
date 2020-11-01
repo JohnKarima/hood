@@ -3,46 +3,31 @@
 {% block content %}
 {{block.super}}
 
-
 <div style="background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.65)), url(/static/img/biz.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment: fixed; height:100vh;">
-
 <div class="container text-center"><br><br>
     <h1 class="whiten underline">Upload a business <a href="{% url 'upload_business' %}">Here</a></h1><br><br>
 </div>
 
-
 <div class="container text-center">
     <div class="row">
-
         {% for business in businesses %}
-
         <div class="col lg-6 text-center">
-    
             <div class="card text-center">
                 <div class="card-header">
                     {{business.biz_name}}
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">{{business.biz_description}}</h5>
+                    <h5 class="card-title">{{business.biz_description}}</h5>
                 </div>
                 <p class="card-text">Contacts: {{business.biz_digits}} </p>
-
                 <div class="card-footer text-muted"> Posted on
                     {{business.pub_date|date:"D d M"}} 
                 </div>
-              </div>
-        
-        </div>  
-                <hr>
+            </div>
+        </div><hr>
             {% endfor %}
-            
-
-
-        </div><br><br><br>
-        <h3 class="whiten">Back to <a href="{%url 'index' %}">Home Page</a></h3>
-
-    </div>
+    </div><br><br><br>
+    <h3 class="whiten">Back to <a href="{%url 'index' %}">Home Page</a></h3>
 </div>
-
-
+</div>
  {% endblock %}
