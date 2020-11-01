@@ -20,7 +20,6 @@ class ProfileTestClass(TestCase):
         self.profile.delete_profile()
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles) == 0)
-
    
 class NeighbourhoodTestClass(TestCase):
     def setUp(self):
@@ -32,8 +31,8 @@ class NeighbourhoodTestClass(TestCase):
     def test_update_neighbourhood(self):
         self.new_neighbourhood.save_neighbourhood()
         neighbourhood_id = self.new_neighbourhood.id
-        Neighbourhood.update_neighbourhood(id, "test")
-        self.assertEqual(self.neighbourhood.neighbourhood,"test")
+        Neighbourhood.update_neighbourhood(id, "kisumu")
+        self.assertEqual(self.neighbourhood.neighbourhood,"kisumu")
 
     def test_delete_neighbourhood(self):
         self.neighbourhood.save_neighbourhood()
@@ -41,3 +40,21 @@ class NeighbourhoodTestClass(TestCase):
         hoods = Neighbourhood.objects.all()
         self.assertTrue(len(hoods) == 0)
 
+class BusinessTestClass(TestCase):
+    def setUp(self):
+        self.new_business = Business(biz_name ='Zaimet',biz_email = 'zaimet@food.com', biz_description='Eat good Live good', biz_digits='0791122323')
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_business, Business))
+
+    def test_update_business(self):
+        self.new_business.save_business()
+        business_id = self.new_business.id
+        Business.update_business(id, "ZaimetKiller")
+        self.assertEqual(self.business.business, "ZaimetKiller")
+
+    def test_delete_business(self):
+        self.business.save_business()
+        self.business.delete_business()
+        business = Business.objects.all()
+        self.assertTrue(len(business) == 0)
