@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {{block.super}}
+<div class="dark-mode whiten">
 <div class="container"><br><br>
     <div class="row">
         <div class="col-md-4"></div>
@@ -9,8 +10,8 @@
             <img class="rounded-circle account-img" src="{{user.profile.profile_photo.url}}" style="width:80px; height:80px;">
         <div class="media-body">
             <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
-            <p class="text-secondary">{{ user.profile.bio }}</p>
+            <p class="">{{ user.email }}</p>
+            <p class="">{{ user.profile.bio }}</p>
         </div>
         <div class="border-top pt-3">
         <small class="text-muted">
@@ -41,11 +42,12 @@
                         {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Upload</button>
+                    <button class="btn btn-outline-light" type="submit">Upload</button>
                 </div>
             </form>
         </div>
         <div class="col-md-2"></div>
     </div>
+</div>
 </div>
 {% endblock %}

@@ -4,11 +4,11 @@
 {%load cloudinary%}
 {%block content %}
 {{block.super}}
-<div class="dark-mode">
+<div class="dark-mode whiten">
 <div class="container"><br><br>
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8 whiten">
+        <div class="col-md-8">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">

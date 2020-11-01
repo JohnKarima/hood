@@ -6,8 +6,12 @@
     color: aliceblue;
 }
 
-.dark-mode{
+.dark-mode {
     background-color: grey;
     height: 100vh;
     width: 100vw;
+}
+
+.underline {
+    text-decoration: underline;
 }
