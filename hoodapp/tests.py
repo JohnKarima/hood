@@ -29,14 +29,14 @@ class NeighbourhoodTestClass(TestCase):
         self.assertTrue(isinstance(self.new_neighbourhood, Neighbourhood))
 
     def test_update_neighbourhood(self):
-        self.new_neighbourhood.save_neighbourhood()
+        self.new_neighbourhood.save_hood()
         neighbourhood_id = self.new_neighbourhood.id
-        Neighbourhood.update_neighbourhood(id, "kisumu")
+        Neighbourhood.update_hood(id, "kisumu")
         self.assertEqual(self.neighbourhood.neighbourhood,"kisumu")
 
     def test_delete_neighbourhood(self):
-        self.neighbourhood.save_neighbourhood()
-        self.neighbourhood.delete_neighbourhood()
+        self.new_neighbourhood.save_hood()
+        self.neighbourhood.delete_hood()
         hoods = Neighbourhood.objects.all()
         self.assertTrue(len(hoods) == 0)
 

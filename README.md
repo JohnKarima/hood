@@ -44,7 +44,7 @@ python manage.py runserver
 ```
 ### Run the test for the application
 ```
-$ python3 manage.py test hood
+$ python3 manage.py test hoodapp
 ```
 
 # Technologies Used
