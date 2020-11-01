@@ -45,6 +45,11 @@ class Neighbourhood(models.Model):
     def update_family_count(cls,id,new_occupant):
         cls.objects.filter(id=id).update(family_size =new_occupant)
 
+    @classmethod
+    def search_hood(cls, search_term):
+        hood = cls.objects.filter(hood_name__icontains=search_term)
+        return hood
+
     def __str__(self):
         return self.hood_name
 
