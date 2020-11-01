@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http  import HttpResponse
 from .models import Profile, User, Post, Neighbourhood, Business, Services
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, PostUploadForm, BizUploadForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, PostUploadForm, BizUploadForm, HoodForm
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
 from django.core.exceptions import ObjectDoesNotExist
@@ -29,7 +29,24 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+
+    users = User.objects.exclude(id=request.user.id)
+    if request.method == "POST":
+        form = HoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            hood = form.save(commit = False)
+            hood.prof_ref = request.user.profile
+            hood.save()
+            messages.success(request, f'Successfully saved your Hood!')
+            return redirect('index')
+    else:
+        form = HoodForm()
+    return render(request, 'users/profile.html', {"form": form, "users": users})
+
+
+
+
+    # return render(request, 'users/profile.html')
 
 @login_required
 def update(request):

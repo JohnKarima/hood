@@ -39,3 +39,12 @@ class BizUploadForm(forms.ModelForm):
     def form_valid(self, form):
         form.instance.user = self.request.profile
         return super().form_valid(form)
+
+class HoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighbourhood
+        fields = ['hood_name', 'hood_location', 'family_size']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.profile
+        return super().form_valid(form)
