@@ -8,7 +8,7 @@
 <br><br>
 
 <div class="container">
-    <h1 class="whiten text-center underline">Hood Emergency Numbers</h1><br><br>
+    <h1 class="whiten text-center underline">Hood Emergency Numbers</h1><br>
     <div class="row">
 
     {% for service in services %}
@@ -20,7 +20,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{service.police_no}}</h5>
             </div>
-        </div><br><br>
+        </div><br>
         <div class="card text-center">
             <div class="card-header">
                 {{service.hospital_name}} 
@@ -28,7 +28,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{service.hospital_no}}</h5>
             </div>
-        </div><br><br>
+        </div><br>
         <div class="card text-center">
             <div class="card-header">
                 {{service.firedpt_name}} Fire Department
