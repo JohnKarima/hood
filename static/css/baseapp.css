@@ -22,3 +22,7 @@
 .underline {
     text-decoration: underline;
 }
+
+.off-white {
+    color: rgb(0, 0, 0);
+}
