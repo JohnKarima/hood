@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {{block.super}}
-<div class="dark-mode-imbo whiten">
 <div class="container"><br><br>
     <div class="row">
         <div class="col-md-2"></div>
@@ -18,18 +17,17 @@
             </div>
             <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <fieldset class="form-group whiten">
+            <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Profile Info</legend>
                 {{ u_form|crispy }}
                 {{ p_form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-light" type="submit">Update</button>
+                <button class="btn btn-outline-info" type="submit">Update</button>
             </div>
             </form>
         </div>
     <div class="col-md-2"></div>
     </div>
-</div>
 </div>
 {% endblock %}

@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {{block.super}}
-<div class="dark-mode whiten">
 <div class="container"><br>
     <div class="row">
         <div class="col-md-4"></div>
@@ -32,12 +31,11 @@
                         {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-light" type="submit">Upload</button>
+                    <button class="btn btn-outline-info" type="submit">Upload</button>
                 </div>
             </form>
         </div>
         <div class="col-md-2"></div>
     </div>
-</div>
 </div>
 {% endblock %}
