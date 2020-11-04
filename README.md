@@ -54,7 +54,6 @@ $ python3 manage.py test hoodapp
 - pillow
 - cloudinary
 - crispy forms
-- djangorestframework
 
 # Contact Information
 karimajohn24@gmail.com
